@@ -1,0 +1,16 @@
+name: C++ CI
+
+on: [push]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install g++
+      run: sudo apt-get install -y g++
+    - name: Compile
+      run: g++ -o find_primes find_primes.cpp
+    - name: Compile and run tests
+      run: g++ -o test_find_primes test_find_primes.cpp && ./test_find_primes
